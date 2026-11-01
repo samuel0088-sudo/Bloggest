@@ -1,0 +1,515 @@
+<title>Compras y contratación pública</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: blog masthead, then one reading column (~68ch) with callouts, a timeline, comparison tables and a full flowchart. */
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --ink:#14212B; --muted:#51606C; --line:#D3DAE0;
+  --accent:#0B5C6B; --accent-ink:#FFFFFF; --mark:#B87A00; --mark-bg:#FBF1D9; --soft:#E3EEF0;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F171D; --surface:#17222A; --ink:#E6EDF1; --muted:#9AAAB5; --line:#2B3A45;
+    --accent:#5CC0D0; --accent-ink:#0F171D; --mark:#E8B84A; --mark-bg:#2A2412; --soft:#1B2D34; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F171D; --surface:#17222A; --ink:#E6EDF1; --muted:#9AAAB5; --line:#2B3A45;
+  --accent:#5CC0D0; --accent-ink:#0F171D; --mark:#E8B84A; --mark-bg:#2A2412; --soft:#1B2D34; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.7;
+  padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin:0 auto}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+.tagline{font-family:var(--font-display);font-size:13px;color:var(--muted)}
+header.post{padding:34px 0 26px;border-bottom:2px solid var(--ink)}
+.cat{display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:4px 10px;margin:0 0 16px}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,7vw,56px);line-height:1.04;margin:0 0 16px;text-wrap:balance;letter-spacing:-.02em}
+.lede{font-size:21px;line-height:1.55;color:var(--muted);margin:0 0 20px;max-width:60ch}
+.meta{font-family:var(--font-display);font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px}
+.meta b{color:var(--ink);font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.tags span{font-family:var(--font-mono);font-size:12px;color:var(--accent);border:1px solid var(--line);padding:3px 9px;background:var(--surface)}
+.hero-art{display:block;width:100%;max-width:100%;height:auto;margin:26px 0 0}
+.toc{background:var(--surface);border:1px solid var(--line);padding:18px 20px;margin:28px 0 0}
+.toc h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--muted);font-family:var(--font-display)}
+.toc ol{margin:0;padding-left:22px;columns:2 240px;column-gap:28px}
+.toc li{margin-bottom:5px;font-family:var(--font-display);font-size:15px;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.toc a:hover,.toc a:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+section{padding-top:48px}
+h2{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,4.8vw,34px);line-height:1.14;margin:0 0 14px;text-wrap:balance;letter-spacing:-.01em;scroll-margin-top:16px}
+h2 .tag{display:block;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+h3{font-family:var(--font-display);font-weight:700;font-size:20px;margin:28px 0 6px;line-height:1.25}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 16px}
+li{margin-bottom:7px}
+.ref{font-family:var(--font-mono);font-size:.76em;background:var(--soft);color:var(--accent);padding:1px 6px;border-radius:4px;white-space:nowrap}
+.note,.know,.example{padding:14px 18px;margin:22px 0;font-size:16.5px;line-height:1.6}
+.note p,.know p,.example p{margin:0 0 8px}
+.note p:last-child,.know p:last-child,.example p:last-child{margin:0}
+.note{background:var(--mark-bg);border-left:4px solid var(--mark)}
+.know{background:var(--soft);border-left:4px solid var(--accent)}
+.example{background:var(--surface);border:1px dashed var(--accent)}
+.lab{font-family:var(--font-display);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+.note .lab{color:var(--mark)}
+.know .lab,.example .lab{color:var(--accent)}
+blockquote{margin:28px 0;padding:4px 0 4px 20px;border-left:4px solid var(--accent);font-family:var(--font-display);font-weight:700;font-size:clamp(21px,4vw,26px);line-height:1.3;text-wrap:balance}
+.def{display:grid;gap:14px;margin:20px 0}
+.def>div{background:var(--surface);border:1px solid var(--line);padding:16px 18px;min-width:0}
+.def h3{margin:0 0 4px;color:var(--accent);font-size:19px}
+.def p{margin:0 0 8px;font-size:16.5px;line-height:1.6}
+.def p:last-child{margin:0}
+.def .p-ex{color:var(--muted);font-size:15.5px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:18px 0}
+.grid2>div{background:var(--surface);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.grid2 h3{margin:0 0 4px;font-size:17px;color:var(--accent)}
+.grid2 p{margin:0;font-size:15.5px;line-height:1.55}
+.scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15.5px;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--font-display);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-bottom:0}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--font-display);font-weight:700}
+.stages{display:grid;margin:20px 0;border:1px solid var(--line);background:var(--surface)}
+.stage{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line)}
+.stage:last-child{border-bottom:0}
+.stage .n{font-family:var(--font-display);font-weight:800;font-size:15px;padding:14px 16px;background:var(--soft);color:var(--accent)}
+.stage .t{padding:14px 16px;font-size:16px;min-width:0;line-height:1.6}
+.stage .t p{margin:0 0 6px}
+@media (max-width:520px){.stage{grid-template-columns:1fr}.stage .n{padding:10px 16px}}
+.timeline{list-style:none;padding:0;margin:22px 0;border-left:3px solid var(--accent)}
+.timeline li{position:relative;padding:0 0 20px 22px;margin:0}
+.timeline li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;background:var(--bg);border:3px solid var(--accent);border-radius:50%}
+.timeline .y{font-family:var(--font-mono);font-size:13px;color:var(--accent);display:block}
+.timeline b{font-family:var(--font-display)}
+.timeline p{margin:2px 0 0;font-size:16px;line-height:1.55}
+.steps{counter-reset:s;list-style:none;padding:0;margin:18px 0}
+.steps li{counter-increment:s;position:relative;padding:0 0 14px 46px;margin:0;min-height:36px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-family:var(--font-display);font-weight:800;font-size:15px}
+figure{margin:22px 0}
+figcaption{font-family:var(--font-display);font-size:13px;color:var(--muted);margin-top:8px}
+.flow{border:1px solid var(--line);background:var(--surface);padding:14px 8px;overflow-x:auto}
+.flow svg{display:block;width:100%;max-width:430px;height:auto;margin:0 auto}
+.f-box{fill:var(--surface);stroke:var(--ink);stroke-width:1.5}
+.f-key{fill:var(--soft);stroke:var(--accent);stroke-width:1.8}
+.f-warn{fill:var(--mark-bg);stroke:var(--mark);stroke-width:1.5}
+.f-t{fill:var(--ink);font-family:var(--font-display);font-size:12.5px;font-weight:500}
+.f-s{fill:var(--muted);font-family:var(--font-mono);font-size:10.5px}
+.f-l{stroke:var(--ink);stroke-width:1.5;fill:none}
+.f-a{fill:var(--ink)}
+.f-bar{fill:var(--accent)}
+.f-ph{fill:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em}
+details{background:var(--surface);border:1px solid var(--line);margin:0 0 10px}
+summary{cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:17px;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--accent)}
+details[open] summary::after{content:"−"}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+details p{padding:0 18px;font-size:16.5px;line-height:1.6}
+details p:last-child{padding-bottom:14px}
+dl.gloss{margin:18px 0;display:grid;gap:0;border:1px solid var(--line);background:var(--surface)}
+.gloss div{padding:12px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:170px 1fr;gap:4px 16px}
+.gloss div:last-child{border-bottom:0}
+.gloss dt{font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:15.5px}
+.gloss dd{margin:0;font-size:15.5px;line-height:1.55;min-width:0}
+@media (max-width:520px){.gloss div{grid-template-columns:1fr}}
+.summary{background:var(--ink);color:var(--bg);padding:22px 24px;margin:24px 0}
+.summary h3{margin:0 0 10px;color:var(--bg);font-size:19px}
+.summary ul{margin:0;padding-left:20px}
+.summary li{font-size:16.5px;line-height:1.55}
+.concl{border-top:2px solid var(--ink);margin-top:48px}
+.refs{font-size:15.5px;padding:0;list-style:none}
+.refs li{padding-left:2.2em;text-indent:-2.2em;margin-bottom:12px;overflow-wrap:anywhere}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<div class="masthead">
+  <div class="brand">Compras<span>Claras</span></div>
+  <div class="tagline">Apuntes de abastecimiento y contratación</div>
+</div>
+
+<header class="post">
+  <span class="cat">Contratación pública</span>
+  <h1>Compras y contratación pública: cómo compra el Estado colombiano</h1>
+  <p class="lede">Cada colegio, vía o hospital público empieza como un proceso de compra. Esta entrada explica con ejemplos qué reglas lo gobiernan, qué pasos sigue y cómo se protege el dinero de todos.</p>
+  <p class="meta"><span><b>Por:</b> [nombres del grupo]</span><span><b>Publicado:</b> 1 de noviembre de 2026</span><span><b>Lectura:</b> unos 15 minutos</span></p>
+  <p class="tags"><span>#ContrataciónPública</span><span>#Ley80</span><span>#Ley1150</span><span>#SECOP</span><span>#Compras</span></p>
+  <svg class="hero-art" viewBox="0 0 720 150" role="img" aria-label="Ilustración de documentos de un proceso de contratación: estudios previos, pliegos, contrato y garantía">
+    <rect x="1" y="1" width="718" height="148" fill="var(--soft)" stroke="var(--line)"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+      <g transform="translate(40,26)"><rect width="120" height="98" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><rect x="12" y="14" width="60" height="6" fill="var(--accent)"/><rect x="12" y="30" width="96" height="3" fill="var(--line)"/><rect x="12" y="40" width="88" height="3" fill="var(--line)"/><rect x="12" y="50" width="96" height="3" fill="var(--line)"/><text x="12" y="84">ESTUDIOS PREVIOS</text></g>
+      <g transform="translate(200,26)"><rect width="120" height="98" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><rect x="12" y="14" width="44" height="6" fill="var(--accent)"/><rect x="12" y="30" width="96" height="3" fill="var(--line)"/><rect x="12" y="40" width="70" height="3" fill="var(--line)"/><rect x="12" y="50" width="96" height="3" fill="var(--line)"/><text x="12" y="84">PLIEGOS</text></g>
+      <g transform="translate(360,26)"><rect width="120" height="98" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><rect x="12" y="14" width="52" height="6" fill="var(--accent)"/><rect x="12" y="30" width="96" height="3" fill="var(--line)"/><rect x="12" y="40" width="80" height="3" fill="var(--line)"/><rect x="12" y="62" width="40" height="1.5" fill="var(--ink)"/><text x="12" y="84">CONTRATO</text></g>
+      <g transform="translate(520,26)"><rect width="120" height="98" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><circle cx="60" cy="38" r="20" fill="none" stroke="var(--mark)" stroke-width="3"/><path d="M50 38l7 7 13-14" fill="none" stroke="var(--mark)" stroke-width="3"/><text x="12" y="84">GARANTÍA</text></g>
+      <g stroke="var(--ink)" stroke-width="1.5" fill="none"><path d="M164 75h30m-6-5l6 5-6 5"/><path d="M324 75h30m-6-5l6 5-6 5"/><path d="M484 75h30m-6-5l6 5-6 5"/></g>
+    </g>
+  </svg>
+
+  <nav class="toc" aria-label="Contenido de la entrada">
+    <h2>En esta entrada</h2>
+    <ol>
+      <li><a href="#concepto">Qué es la contratación pública</a></li>
+      <li><a href="#privada">Diferencia con la contratación privada</a></li>
+      <li><a href="#principios">Los principios</a></li>
+      <li><a href="#inhabilidades">Inhabilidad, incompatibilidad y conflicto de intereses</a></li>
+      <li><a href="#etapas">Etapas y documentos</a></li>
+      <li><a href="#licitacion">Licitación pública y otras modalidades</a></li>
+      <li><a href="#flujo">Diagrama de flujo</a></li>
+      <li><a href="#garantias">Garantías y seguros</a></li>
+      <li><a href="#glosario">Glosario</a></li>
+      <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      <li><a href="#conclusiones">Conclusiones</a></li>
+      <li><a href="#bibliografia">Bibliografía</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="intro">
+  <p>Imagine que una alcaldía quiere construir un colegio. Necesita un terreno, planos, un constructor, alguien que vigile la obra y un seguro por si algo sale mal. Si el alcalde pudiera escoger libremente al constructor, el riesgo de favoritismo sería enorme. Por eso, en Colombia ese proceso se rige por reglas escritas y públicas, y a ese conjunto de reglas lo llamamos <b>contratación pública</b>.</p>
+  <p>Para escribir esta entrada leímos la <b>Ley 80 de 1993</b>, la <b>Ley 1150 de 2007</b> y el <b>Decreto 1510 de 2013</b>, además del material del Módulo 2 de la asignatura. Al final encontrará un glosario, preguntas frecuentes y las conclusiones del grupo.</p>
+  <div class="note">
+    <span class="lab">Dato para no perderse</span>
+    <p>El Decreto 1510 de 2013 fue compilado en el Decreto 1082 de 2015, que hoy es el decreto único reglamentario del sector de Planeación Nacional. Por eso, cuando esta entrada cita artículos del reglamento vigente, usa la numeración del Decreto 1082 (por ejemplo, <span class="ref">2.2.1.2.3.1.1</span>). Las ideas del Decreto 1510 siguen siendo la base del procedimiento.</p>
+  </div>
+</section>
+
+<section id="concepto">
+  <h2><span class="tag">Punto 1</span>Qué es la contratación pública</h2>
+  <p>La contratación pública es el conjunto de procedimientos, reglas y contratos con los que una entidad del Estado escoge a un particular para obtener bienes, obras o servicios, y le paga con recursos públicos. Su norma central es la <span class="ref">Ley 80 de 1993</span>, el Estatuto General de Contratación de la Administración Pública. La <span class="ref">Ley 1150 de 2007</span> la modificó para dar más eficiencia y transparencia, y creó las modalidades de selección que se usan hoy.</p>
+  <blockquote>Contratar con dinero público significa que cada decisión debe poder explicarse y verificarse.</blockquote>
+  <h3>Cómo evolucionó la norma</h3>
+  <ol class="timeline">
+    <li><span class="y">1993</span><b>Ley 80.</b><p>Crea el Estatuto General de Contratación de la Administración Pública y fija principios, inhabilidades, contratos y responsabilidades.</p></li>
+    <li><span class="y">2007</span><b>Ley 1150.</b><p>Introduce medidas de eficiencia y transparencia, y define las modalidades de selección: licitación pública, selección abreviada, concurso de méritos y contratación directa.</p></li>
+    <li><span class="y">2011</span><b>Ley 1474 (Estatuto Anticorrupción) y creación de Colombia Compra Eficiente.</b><p>Se agrega la mínima cuantía como quinta modalidad y se crea la Agencia Nacional de Contratación Pública, mediante el Decreto-ley 4170.</p></li>
+    <li><span class="y">2013</span><b>Decreto 1510.</b><p>Reglamenta el sistema de compras y contratación pública.</p></li>
+    <li><span class="y">2015</span><b>Decreto 1082.</b><p>Compila el Decreto 1510 en el decreto único del sector Planeación y ajusta los textos que el Consejo de Estado había suspendido provisionalmente.</p></li>
+  </ol>
+  <h3>Quién participa en un proceso</h3>
+  <div class="grid2">
+    <div><h3>Entidad estatal</h3><p>Necesita el bien o servicio, planea la compra, selecciona al contratista y administra el contrato.</p></div>
+    <div><h3>Proponente y contratista</h3><p>El particular que presenta una oferta y, si gana, firma el contrato y lo ejecuta.</p></div>
+    <div><h3>Supervisor o interventor</h3><p>Vigila que el contrato se cumpla en lo técnico, administrativo, financiero y jurídico.</p></div>
+    <div><h3>Colombia Compra Eficiente</h3><p>Agencia que define políticas, administra el SECOP y emite conceptos sobre cómo aplicar las normas.</p></div>
+    <div><h3>Órganos de control</h3><p>Contraloría, Procuraduría y Fiscalía vigilan el uso de los recursos y la conducta de los servidores.</p></div>
+    <div><h3>Ciudadanía y veedurías</h3><p>Consultan los procesos publicados en el SECOP y pueden vigilarlos.</p></div>
+  </div>
+  <div class="know">
+    <span class="lab">¿Sabías que?</span>
+    <p>La licitación pública es la regla general para escoger al contratista. Las demás modalidades solo se usan en los casos que la ley prevé.</p>
+  </div>
+</section>
+
+<section id="privada">
+  <h2><span class="tag">Punto 2</span>Diferencia con la contratación privada</h2>
+  <p>Cuando una panadería compra harina, escoge al proveedor que le convenga: el más barato, el de confianza o el que le entrega más rápido. Cuando una alcaldía compra harina para un programa escolar, no puede hacerlo así, porque el dinero no es del alcalde. Esa es la diferencia de fondo, y de ella salen todas las demás.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Aspecto</th><th>Contratación pública</th><th>Contratación privada</th></tr></thead>
+    <tbody>
+      <tr><td>Quién compra</td><td>Entidad estatal</td><td>Persona o empresa particular</td></tr>
+      <tr><td>Recursos</td><td>Públicos</td><td>Propios de la empresa</td></tr>
+      <tr><td>Finalidad</td><td>Interés general y fines del Estado</td><td>Interés económico de las partes</td></tr>
+      <tr><td>Selección del proveedor</td><td>Procedimiento reglado, con selección objetiva y publicidad</td><td>Libre: se escoge por negociación, confianza o conveniencia</td></tr>
+      <tr><td>Norma principal</td><td>Ley 80 de 1993, Ley 1150 de 2007 y decretos reglamentarios</td><td>Código Civil y Código de Comercio</td></tr>
+      <tr><td>Prerrogativas</td><td>La entidad puede ejercer facultades especiales, como interpretar, modificar o terminar unilateralmente el contrato en los casos que la ley permite</td><td>Las partes están en igualdad contractual</td></tr>
+      <tr><td>Control</td><td>Contraloría, Procuraduría, veedurías y control social por el SECOP</td><td>Control interno y, en caso de litigio, un juez</td></tr>
+      <tr><td>Garantías</td><td>Reglas legales sobre amparos, vigencia y suficiencia</td><td>Las pactan libremente las partes</td></tr>
+      <tr><td>Publicidad</td><td>Los procesos se publican en el SECOP</td><td>Normalmente confidencial</td></tr>
+    </tbody>
+  </table></div>
+  <div class="know">
+    <span class="lab">En palabras simples</span>
+    <p>En lo privado manda la libertad de las partes. En lo público manda la ley, y la entidad solo puede hacer lo que la norma le permite.</p>
+  </div>
+</section>
+
+<section id="principios">
+  <h2><span class="tag">Punto 3</span>Los principios de la contratación pública</h2>
+  <p>Los principios son las ideas que orientan cómo se interpreta la ley cuando algo no está claro. Los de la función administrativa vienen del artículo 209 de la Constitución, y la Ley 80 y la Ley 1150 los desarrollan para contratar. Cada tarjeta incluye cómo se ve el principio en un proceso real.</p>
+  <div class="def">
+    <div><h3>Transparencia</h3>
+      <p>Las actuaciones son públicas y las reglas del proceso son claras para todos. Los interesados pueden conocer los documentos y controvertirlos. <span class="ref">Ley 80, art. 24</span></p>
+      <p class="p-ex">En la práctica: el pliego de condiciones y el informe de evaluación se publican en el SECOP para que cualquiera los revise.</p></div>
+    <div><h3>Economía</h3>
+      <p>Los trámites se limitan a lo necesario, con plazos definidos y sin formalismos que encarezcan o demoren la compra. <span class="ref">Ley 80, art. 25</span></p>
+      <p class="p-ex">En la práctica: la entidad define de antemano los plazos de cada etapa y no pide documentos que no necesita.</p></div>
+    <div><h3>Responsabilidad</h3>
+      <p>Los servidores públicos y los contratistas responden por sus actuaciones y omisiones. La entidad debe vigilar la ejecución. <span class="ref">Ley 80, art. 26</span></p>
+      <p class="p-ex">En la práctica: si el interventor aprueba una obra defectuosa, puede responder disciplinaria, fiscal o penalmente según el caso.</p></div>
+    <div><h3>Selección objetiva</h3>
+      <p>Se escoge la oferta más favorable para la entidad y para los fines que busca, sin motivos de afecto, interés o factores subjetivos. <span class="ref">Ley 1150, art. 5</span></p>
+      <p class="p-ex">En la práctica: los criterios de puntaje se fijan en el pliego antes de recibir ofertas y no se cambian después.</p></div>
+    <div><h3>Planeación</h3>
+      <p>Toda compra parte de estudios que definan la necesidad, el presupuesto, los riesgos y la modalidad.</p>
+      <p class="p-ex">En la práctica: no se abre un proceso sin estudios previos ni certificado de disponibilidad presupuestal.</p></div>
+    <div><h3>Igualdad y libre concurrencia</h3>
+      <p>Todos los interesados que cumplan los requisitos compiten en las mismas condiciones, y los pliegos no pueden diseñarse para favorecer a uno.</p>
+      <p class="p-ex">En la práctica: un requisito que solo cumple una empresa es una señal de alerta.</p></div>
+    <div><h3>Equilibrio económico del contrato</h3>
+      <p>Se mantiene la relación entre lo que el contratista aporta y lo que recibe. Si cambian las condiciones por causas ajenas a él, se restablece el equilibrio. <span class="ref">Ley 80, art. 27</span></p>
+      <p class="p-ex">En la práctica: si la entidad ordena una obra adicional no prevista, ajusta el valor del contrato.</p></div>
+    <div><h3>Buena fe, moralidad, eficacia, celeridad, imparcialidad y publicidad</h3>
+      <p>Las partes actúan con lealtad, la entidad cumple sus fines con resultados reales y en tiempos razonables, decide sin favoritismos y da a conocer lo que hace.</p></div>
+  </div>
+</section>
+
+<section id="inhabilidades">
+  <h2><span class="tag">Punto 4</span>Inhabilidad, incompatibilidad y conflicto de intereses</h2>
+  <p>Estos tres términos protegen la imparcialidad del proceso y se confunden con facilidad. La Ley 80 de 1993 regula las inhabilidades e incompatibilidades en su artículo 8. Colombia Compra Eficiente recuerda que se interpretan de forma restrictiva: solo existen las causales que la ley fija expresamente, y no se pueden ampliar por analogía.</p>
+  <div class="def">
+    <div><h3>Inhabilidad</h3>
+      <p>Es una condición o circunstancia que impide a una persona participar en un proceso de selección o celebrar contratos con el Estado. Suele nacer de hechos del pasado o de la situación de la persona, y por eso funciona como una barrera de entrada.</p>
+      <p><b>Ejemplos de causales:</b> haber dado lugar a la declaratoria de caducidad de un contrato estatal (la inhabilidad dura el tiempo que fija la ley), estar reportado en el boletín de responsables fiscales o tener ciertas condenas penales.</p>
+      <p><b>Consecuencia:</b> quien está inhabilitado no puede ser contratista, y si el contrato se firma de todas formas puede ser declarado nulo.</p></div>
+    <div><h3>Incompatibilidad</h3>
+      <p>Es una prohibición para contratar con una entidad concreta, o para hacer dos cosas a la vez, derivada de la relación que la persona tiene o tuvo con ella.</p>
+      <p><b>Ejemplos de causales:</b> quienes fueron miembros de la junta o consejo directivo, o servidores públicos de la entidad, no pueden contratar con ella durante el año siguiente a su retiro. También están impedidos el cónyuge o los parientes cercanos de directivos y asesores de la entidad contratante.</p>
+      <p><b>Si aparece después:</b> la Ley 80 prevé las inhabilidades e incompatibilidades sobrevinientes (art. 9). Si surgen durante la ejecución, el contratista debe ceder el contrato o renunciar a él.</p></div>
+    <div><h3>Conflicto de intereses</h3>
+      <p>Aparece cuando el interés personal, familiar o económico de quien debe decidir choca con el interés general que tiene que proteger. Se regula, entre otras normas, en los artículos 11 y 12 de la Ley 1437 de 2011.</p>
+      <p><b>Ejemplo:</b> un miembro del comité evaluador descubre que uno de los proponentes es una empresa de su hermano. Aunque no exista una inhabilidad automática, debe declararse impedido y apartarse de la evaluación.</p>
+      <p><b>Quién lo debe declarar:</b> el servidor público y también los particulares que cumplen funciones en el proceso, como los evaluadores externos.</p></div>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Figura</th><th>Pregunta que responde</th><th>Efecto</th></tr></thead>
+    <tbody>
+      <tr><td>Inhabilidad</td><td>¿Esta persona puede contratar con el Estado?</td><td>Le impide participar o firmar el contrato</td></tr>
+      <tr><td>Incompatibilidad</td><td>¿Puede contratar con esta entidad, o ejercer esta función a la vez?</td><td>Limita con quién o junto a qué puede contratar</td></tr>
+      <tr><td>Conflicto de intereses</td><td>¿Esta persona puede decidir sobre este asunto?</td><td>Debe declararse impedida y apartarse de la decisión</td></tr>
+    </tbody>
+  </table></div>
+  <blockquote>La inhabilidad dice quién no puede contratar, la incompatibilidad dice con quién o junto a qué no puede hacerlo, y el conflicto de intereses dice quién no debe decidir.</blockquote>
+</section>
+
+<section id="etapas">
+  <h2><span class="tag">Punto 5</span>Estructura, etapas y documentos del proceso</h2>
+  <p>Un proceso de contratación pública avanza por etapas ordenadas, y cada una deja documentos que se publican en el SECOP. Si pensamos en la alcaldía que quiere construir un colegio, así se vería cada etapa.</p>
+  <div class="stages">
+    <div class="stage"><div class="n">1. Planeación (precontractual)</div><div class="t"><p>La entidad define qué necesita, cuánto cuesta y qué riesgos tiene.</p><p><b>Documentos:</b> Plan Anual de Adquisiciones, estudio del sector, estudios previos, análisis de riesgos y certificado de disponibilidad presupuestal (CDP).</p><p><i>Ejemplo:</i> la alcaldía estudia cuánto cuestan obras similares y confirma que tiene presupuesto.</p></div></div>
+    <div class="stage"><div class="n">2. Selección</div><div class="t"><p>Se convoca a los interesados, se reciben ofertas y se escoge al contratista según la modalidad.</p><p><b>Documentos:</b> aviso de convocatoria, proyecto de pliego, acto administrativo de apertura, pliego de condiciones definitivo, adendas, ofertas, informe de evaluación y acto de adjudicación (o de declaratoria de desierto).</p><p><i>Ejemplo:</i> constructoras presentan ofertas y un comité las evalúa con los criterios del pliego.</p></div></div>
+    <div class="stage"><div class="n">3. Contratación</div><div class="t"><p>Se formaliza el acuerdo y se cumplen los requisitos para empezar.</p><p><b>Documentos:</b> contrato escrito, registro presupuestal (RP) y garantías aprobadas por la entidad.</p><p><i>Ejemplo:</i> la constructora ganadora firma y entrega las pólizas.</p></div></div>
+    <div class="stage"><div class="n">4. Ejecución</div><div class="t"><p>El contratista cumple y la entidad vigila mediante un supervisor o un interventor.</p><p><b>Documentos:</b> acta de inicio, informes de supervisión o interventoría, modificaciones o adiciones, actas de recibo y pagos.</p><p><i>Ejemplo:</i> un interventor revisa avances de obra antes de autorizar cada pago.</p></div></div>
+    <div class="stage"><div class="n">5. Liquidación y cierre</div><div class="t"><p>Se hace el balance final del contrato y se dan por cumplidas las obligaciones.</p><p><b>Documentos:</b> acta de liquidación y, si aplica, la extensión de las garantías que siguen vigentes, como las de estabilidad de la obra.</p><p><i>Ejemplo:</i> el colegio se recibe, se liquida el contrato y la póliza de estabilidad sigue cubriendo defectos.</p></div></div>
+  </div>
+  <div class="know">
+    <span class="lab">¿Sabías que?</span>
+    <p>La etapa de planeación es la más importante, aunque sea la menos visible. Un proceso mal planeado suele terminar con adiciones de valor, retrasos o incumplimientos.</p>
+  </div>
+</section>
+
+<section id="licitacion">
+  <h2><span class="tag">Punto 6</span>Licitación pública y otras modalidades de selección</h2>
+  <h3>Qué es la licitación pública</h3>
+  <p>Es el procedimiento abierto y competitivo en el que cualquier interesado que cumpla las condiciones puede presentar una oferta, y se adjudica a la mejor según criterios definidos de antemano. Es la regla general: se usa cuando no aplica una de las otras modalidades. <span class="ref">Ley 1150, art. 2, num. 1</span></p>
+  <h3>Cómo funciona, paso a paso</h3>
+  <ol class="steps">
+    <li><b>Convocatoria.</b> La entidad publica el aviso y el proyecto de pliego, y recibe observaciones de los interesados.</li>
+    <li><b>Apertura.</b> Expide el acto administrativo de apertura y el pliego definitivo, con los requisitos habilitantes y los criterios de evaluación.</li>
+    <li><b>Audiencias y adendas.</b> Se realiza la audiencia de asignación de riesgos y aclaración de pliegos, y se publican las adendas que haga falta.</li>
+    <li><b>Ofertas.</b> Los proponentes presentan sus propuestas hasta la fecha y hora de cierre.</li>
+    <li><b>Evaluación.</b> Un comité evalúa las ofertas, publica el informe y atiende las observaciones.</li>
+    <li><b>Adjudicación.</b> La entidad adjudica en audiencia pública al proponente que obtuvo el mejor resultado, o declara desierto el proceso si ninguna oferta cumple.</li>
+  </ol>
+  <h3>Las cinco modalidades de selección</h3>
+  <p>La Ley 1150 de 2007 fijó cuatro modalidades y las leyes 1450 y 1474 de 2011 agregaron la mínima cuantía, de modo que hoy son cinco. La licitación es la general y las otras cuatro son especiales.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Modalidad</th><th>Cuándo se usa</th><th>Qué se privilegia</th></tr></thead>
+    <tbody>
+      <tr><td>Licitación pública</td><td>Regla general, cuando no aplica una modalidad especial</td><td>Oferta más favorable, con ponderación de factores técnicos y económicos</td></tr>
+      <tr><td>Selección abreviada</td><td>Bienes y servicios de características técnicas uniformes, menor cuantía, subasta inversa, acuerdo marco de precios y otros casos que la ley enumera</td><td>Eficiencia y menor tiempo, con precio o relación precio y calidad</td></tr>
+      <tr><td>Concurso de méritos</td><td>Selección de consultores o proyectos, como diseños, estudios e interventoría</td><td>Calidad y experiencia, no el precio</td></tr>
+      <tr><td>Contratación directa</td><td>Solo en las causales que la ley enumera, como urgencia manifiesta, contratos interadministrativos y servicios profesionales. La entidad debe justificarla en un acto administrativo</td><td>Idoneidad del contratista, sin competencia entre ofertas</td></tr>
+      <tr><td>Mínima cuantía</td><td>Compras cuyo valor no pasa del 10 % de la menor cuantía de la entidad, sin importar el objeto</td><td>Precio</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Un ejemplo para cada una</h3>
+  <div class="grid2">
+    <div><h3>Licitación pública</h3><p>Una gobernación construye un hospital: obra grande, muchos posibles proponentes.</p></div>
+    <div><h3>Selección abreviada</h3><p>Una alcaldía compra computadores para colegios: bienes de características técnicas uniformes, que se pueden comparar por precio.</p></div>
+    <div><h3>Concurso de méritos</h3><p>Una entidad contrata los diseños de un puente o la interventoría de una obra: importa la experiencia del equipo.</p></div>
+    <div><h3>Contratación directa</h3><p>Se contrata de inmediato la reparación de un acueducto tras un desastre, declarando urgencia manifiesta.</p></div>
+    <div><h3>Mínima cuantía</h3><p>Una oficina compra resmas de papel y tóner por un valor pequeño: gana la oferta más barata que cumpla.</p></div>
+  </div>
+  <h3>Cómo se escoge la modalidad</h3>
+  <p>Como orientación general, la entidad se pregunta lo siguiente, en este orden. Las causales de cada modalidad están en la ley, así que esta guía no la reemplaza.</p>
+  <ol>
+    <li>¿Se configura una de las causales que la ley fija para contratar directamente? Entonces procede la <b>contratación directa</b>, con acto de justificación.</li>
+    <li>¿Se necesitan consultores o proyectos? Entonces va el <b>concurso de méritos</b>.</li>
+    <li>¿El valor no pasa de la mínima cuantía de la entidad? Entonces va la <b>mínima cuantía</b>.</li>
+    <li>¿Se compran bienes o servicios uniformes, o aplica otro caso de la lista legal? Entonces va la <b>selección abreviada</b>.</li>
+    <li>Si ninguna aplica, la regla general: <b>licitación pública</b>.</li>
+  </ol>
+  <div class="know">
+    <span class="lab">¿Sabías que?</span>
+    <p>Los procesos se publican y se siguen en el SECOP, y las compras de bienes y servicios de características uniformes pueden hacerse también por la Tienda Virtual del Estado Colombiano, mediante acuerdos marco de precios.</p>
+  </div>
+</section>
+
+<section id="flujo">
+  <h2><span class="tag">Punto 7</span>Diagrama de flujo de un proceso de contratación pública</h2>
+  <p>El diagrama sigue el procedimiento estándar de una licitación pública, de la identificación de la necesidad a la liquidación. Léalo de arriba hacia abajo. La barra de la izquierda indica la fase, el rombo es la única decisión del proceso y la caja amarilla muestra qué pasa si ninguna oferta cumple. Las otras modalidades acortan algunos pasos, pero conservan la secuencia de planear, seleccionar, contratar, ejecutar y liquidar.</p>
+  <figure>
+    <div class="flow">
+    <svg viewBox="0 0 430 935" role="img" aria-label="Diagrama de flujo del proceso de contratación pública, de la identificación de la necesidad a la liquidación del contrato">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-a"/></marker></defs>
+      <rect class="f-bar" x="8" y="10" width="4" height="116"/><text class="f-ph" transform="translate(26,68) rotate(-90)" text-anchor="middle">PLANEACIÓN</text>
+      <rect class="f-bar" x="8" y="146" width="4" height="568"/><text class="f-ph" transform="translate(26,430) rotate(-90)" text-anchor="middle">SELECCIÓN</text>
+      <rect class="f-bar" x="8" y="734" width="4" height="48"/><text class="f-ph" transform="translate(26,758) rotate(-90)" text-anchor="middle">CONTRATO</text>
+      <rect class="f-bar" x="8" y="802" width="4" height="116"/><text class="f-ph" transform="translate(26,860) rotate(-90)" text-anchor="middle">EJECUCIÓN</text>
+      <g>
+        <rect class="f-box" x="165" y="10" width="250" height="48"/><text class="f-t" x="290" y="31" text-anchor="middle">Identificar la necesidad e</text><text class="f-t" x="290" y="47" text-anchor="middle">incluirla en el Plan Anual de Adquisiciones</text>
+        <rect class="f-box" x="165" y="78" width="250" height="48"/><text class="f-t" x="290" y="99" text-anchor="middle">Estudios previos, estudio del sector,</text><text class="f-t" x="290" y="115" text-anchor="middle">análisis de riesgos y CDP</text>
+        <rect class="f-key" x="165" y="146" width="250" height="48"/><text class="f-t" x="290" y="167" text-anchor="middle">Escoger la modalidad de selección</text><text class="f-t" x="290" y="183" text-anchor="middle">según objeto y cuantía</text>
+        <rect class="f-box" x="165" y="214" width="250" height="48"/><text class="f-t" x="290" y="235" text-anchor="middle">Aviso de convocatoria y proyecto</text><text class="f-t" x="290" y="251" text-anchor="middle">de pliego publicados en el SECOP</text>
+        <rect class="f-box" x="165" y="282" width="250" height="48"/><text class="f-t" x="290" y="303" text-anchor="middle">Acto de apertura y</text><text class="f-t" x="290" y="319" text-anchor="middle">pliego de condiciones definitivo</text>
+        <rect class="f-box" x="165" y="350" width="250" height="48"/><text class="f-t" x="290" y="371" text-anchor="middle">Audiencia de riesgos, observaciones</text><text class="f-t" x="290" y="387" text-anchor="middle">y adendas</text>
+        <rect class="f-box" x="165" y="418" width="250" height="48"/><text class="f-t" x="290" y="439" text-anchor="middle">Cierre del proceso:</text><text class="f-t" x="290" y="455" text-anchor="middle">presentación de ofertas</text>
+        <rect class="f-box" x="165" y="486" width="250" height="48"/><text class="f-t" x="290" y="507" text-anchor="middle">Evaluación de ofertas e</text><text class="f-t" x="290" y="523" text-anchor="middle">informe publicado para observaciones</text>
+        <path class="f-key" d="M290 554L408 594L290 634L172 594Z"/><text class="f-t" x="290" y="591" text-anchor="middle">¿Alguna oferta</text><text class="f-t" x="290" y="607" text-anchor="middle">cumple?</text>
+        <rect class="f-warn" x="30" y="646" width="124" height="72"/><text class="f-t" x="92" y="666" text-anchor="middle">Se declara</text><text class="f-t" x="92" y="682" text-anchor="middle">desierto y se abre</text><text class="f-t" x="92" y="698" text-anchor="middle">nueva convocatoria</text><text class="f-s" x="92" y="712" text-anchor="middle">o selección abreviada</text>
+        <rect class="f-key" x="165" y="666" width="250" height="48"/><text class="f-t" x="290" y="687" text-anchor="middle">Adjudicación en audiencia pública</text><text class="f-t" x="290" y="703" text-anchor="middle">(acto administrativo)</text>
+        <rect class="f-box" x="165" y="734" width="250" height="48"/><text class="f-t" x="290" y="755" text-anchor="middle">Firma del contrato, registro</text><text class="f-t" x="290" y="771" text-anchor="middle">presupuestal y garantías aprobadas</text>
+        <rect class="f-box" x="165" y="802" width="250" height="48"/><text class="f-t" x="290" y="823" text-anchor="middle">Acta de inicio, ejecución y</text><text class="f-t" x="290" y="839" text-anchor="middle">supervisión o interventoría</text>
+        <rect class="f-key" x="165" y="870" width="250" height="48"/><text class="f-t" x="290" y="891" text-anchor="middle">Liquidación del contrato</text><text class="f-t" x="290" y="907" text-anchor="middle">y cierre del expediente</text>
+      </g>
+      <g class="f-l" marker-end="url(#ar)">
+        <path d="M290 58V76" marker-end="url(#ar)"/><path d="M290 126V144" marker-end="url(#ar)"/><path d="M290 194V212" marker-end="url(#ar)"/>
+        <path d="M290 262V280" marker-end="url(#ar)"/><path d="M290 330V348" marker-end="url(#ar)"/><path d="M290 398V416" marker-end="url(#ar)"/>
+        <path d="M290 466V484" marker-end="url(#ar)"/><path d="M290 534V552" marker-end="url(#ar)"/>
+        <path d="M290 634V664" marker-end="url(#ar)"/>
+        <path d="M172 594H92V644" marker-end="url(#ar)"/>
+        <path d="M290 714V732" marker-end="url(#ar)"/><path d="M290 782V800" marker-end="url(#ar)"/><path d="M290 850V868" marker-end="url(#ar)"/>
+      </g>
+      <text class="f-s" x="300" y="652">Sí</text><text class="f-s" x="126" y="588">No</text>
+    </svg>
+    </div>
+    <figcaption>Elaboración propia con base en la Ley 1150 de 2007 y el Decreto 1082 de 2015.</figcaption>
+  </figure>
+</section>
+
+<section id="garantias">
+  <h2><span class="tag">Punto 8</span>Garantías y seguros en la contratación pública</h2>
+  <p>Una garantía es un respaldo que protege a la entidad si algo sale mal. Piense en el colegio de nuestro ejemplo: si la constructora abandona la obra, si el techo se cae al año o si un obrero daña la casa del vecino, alguien tiene que responder. Las garantías aseguran que ese alguien exista y pueda pagar. La base legal es el artículo 7 de la Ley 1150 de 2007 y los artículos <span class="ref">2.2.1.2.3.1.1</span> y siguientes del Decreto 1082 de 2015.</p>
+  <h3>Con qué se constituyen</h3>
+  <div class="grid2">
+    <div><h3>Contrato de seguro</h3><p>La póliza expedida por una aseguradora. Es el mecanismo más usado.</p></div>
+    <div><h3>Patrimonio autónomo</h3><p>Bienes que se separan en una fiducia para respaldar el cumplimiento.</p></div>
+    <div><h3>Garantía bancaria</h3><p>Respaldo de un banco, incluida la carta de crédito stand by.</p></div>
+  </div>
+  <h3>Los amparos principales</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Amparo</th><th>Qué protege</th></tr></thead>
+    <tbody>
+      <tr><td>Seriedad de la oferta</td><td>Que el proponente mantenga su oferta y firme el contrato si resulta adjudicatario</td></tr>
+      <tr><td>Cumplimiento</td><td>Que el contratista cumpla las obligaciones del contrato, incluidas multas y cláusula penal</td></tr>
+      <tr><td>Buen manejo y correcta inversión del anticipo</td><td>Que el dinero entregado por adelantado se use en el contrato</td></tr>
+      <tr><td>Devolución del pago anticipado</td><td>Que se devuelva lo pagado por adelantado si no se cumple</td></tr>
+      <tr><td>Calidad del servicio y de los bienes</td><td>Que lo entregado funcione y cumpla las especificaciones</td></tr>
+      <tr><td>Estabilidad y calidad de la obra</td><td>Que la obra no presente defectos después de recibida</td></tr>
+      <tr><td>Pago de salarios, prestaciones e indemnizaciones laborales</td><td>Que el contratista responda por el personal que usa en el contrato</td></tr>
+      <tr><td>Responsabilidad civil extracontractual</td><td>Daños a terceros causados por el contratista o sus subcontratistas durante la ejecución</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Reglas que conviene recordar</h3>
+  <ul>
+    <li><b>Cuándo son obligatorias.</b> En licitación pública, selección abreviada y concurso de méritos son obligatorias las garantías de seriedad de la oferta y de cumplimiento. En contratación directa y mínima cuantía, la entidad decide y justifica si las exige.</li>
+    <li><b>Responsabilidad civil extracontractual.</b> Es obligatoria en los contratos de obra y en los demás donde la entidad la considere necesaria por los riesgos. Solo se cubre con póliza de seguro, no con garantía bancaria.</li>
+    <li><b>Indivisibilidad.</b> La garantía de cobertura del riesgo es indivisible. Una excepción son los contratos de más de cinco años, que permiten dividirla por etapas.</li>
+    <li><b>Suficiencia y vigencia.</b> Los valores asegurados y las vigencias deben cumplir las reglas del decreto, que dependen del valor y la duración del contrato. La entidad revisa y aprueba la garantía antes de iniciar la ejecución.</li>
+    <li><b>Si hay incumplimiento.</b> La entidad declara el siniestro mediante acto administrativo y reclama a la aseguradora o al garante.</li>
+  </ul>
+  <div class="example">
+    <span class="lab">Ejemplo</span>
+    <p>La constructora del colegio recibe un anticipo. Si lo gasta en otra obra, el amparo de buen manejo del anticipo responde. Si a los ocho meses aparecen grietas en una pared, responde la garantía de estabilidad y calidad de la obra. Si un camión de la obra choca un vehículo particular, responde el seguro de responsabilidad civil extracontractual.</p>
+  </div>
+  <div class="know">
+    <span class="lab">Por qué importa</span>
+    <p>Para el Estado, la garantía convierte un riesgo incierto en un costo conocido. Para el contratista, es una condición para participar y un indicador de lo que se espera de su cumplimiento.</p>
+  </div>
+</section>
+
+<section id="glosario">
+  <h2><span class="tag">Para repasar</span>Glosario básico</h2>
+  <dl class="gloss">
+    <div><dt>Adenda</dt><dd>Documento que modifica el pliego de condiciones durante el proceso de selección.</dd></div>
+    <div><dt>Adjudicación</dt><dd>Decisión por la cual la entidad escoge al proponente ganador, mediante acto administrativo.</dd></div>
+    <div><dt>Anticipo</dt><dd>Dinero que la entidad entrega al contratista antes de que ejecute, para que empiece el contrato. Debe manejarse y garantizarse de forma especial.</dd></div>
+    <div><dt>Caducidad</dt><dd>Terminación del contrato que la entidad declara por un incumplimiento grave del contratista. Genera inhabilidad para contratar.</dd></div>
+    <div><dt>CDP</dt><dd>Certificado de disponibilidad presupuestal: confirma que la entidad tiene presupuesto para la compra.</dd></div>
+    <div><dt>Cuantía</dt><dd>Valor del contrato. Define, junto con el objeto, qué modalidad se usa.</dd></div>
+    <div><dt>Desierto</dt><dd>Proceso que se cierra sin adjudicar porque ninguna oferta cumplió o no hubo oferentes.</dd></div>
+    <div><dt>Estudios previos</dt><dd>Documentos que justifican la necesidad, el valor, los riesgos y la modalidad antes de abrir el proceso.</dd></div>
+    <div><dt>Interventoría</dt><dd>Vigilancia del contrato por una persona o firma externa contratada para ello, cuando se requiere conocimiento especializado.</dd></div>
+    <div><dt>Pliego de condiciones</dt><dd>Documento con las reglas del proceso: requisitos, criterios de evaluación, cronograma y condiciones del contrato.</dd></div>
+    <div><dt>Proponente</dt><dd>Persona o empresa que presenta una oferta en un proceso de selección.</dd></div>
+    <div><dt>RP</dt><dd>Registro presupuestal: compromete de forma definitiva los recursos para el contrato firmado.</dd></div>
+    <div><dt>SECOP</dt><dd>Sistema Electrónico para la Contratación Pública, donde se publican y gestionan los procesos.</dd></div>
+    <div><dt>Siniestro</dt><dd>Hecho cubierto por la garantía, como el incumplimiento del contratista, que activa el pago de la aseguradora.</dd></div>
+    <div><dt>Supervisión</dt><dd>Vigilancia del contrato que hace la propia entidad con sus funcionarios.</dd></div>
+  </dl>
+</section>
+
+<section id="preguntas">
+  <h2><span class="tag">Dudas comunes</span>Preguntas frecuentes</h2>
+  <details><summary>¿Contratación directa significa que no hay reglas?</summary>
+    <p>No. Solo se puede usar en las causales que la ley enumera, y la entidad debe justificarla en un acto administrativo. También deben cumplirse los principios de transparencia, responsabilidad y selección del contratista idóneo.</p></details>
+  <details><summary>¿Qué pasa si solo se presenta un proponente?</summary>
+    <p>El proceso no se cae por tener una sola oferta. Si esa oferta cumple los requisitos del pliego, la entidad puede adjudicarla. Si no cumple, se declara desierto.</p></details>
+  <details><summary>¿Cualquier persona puede ver un proceso de contratación?</summary>
+    <p>Sí. Los procesos se publican en el SECOP, y la ciudadanía puede consultar los documentos y vigilar su avance.</p></details>
+  <details><summary>¿Quién controla que el contrato se cumpla?</summary>
+    <p>Primero, el supervisor o el interventor. Además, los órganos de control, como la Contraloría y la Procuraduría, y las veedurías ciudadanas.</p></details>
+  <details><summary>¿Por qué las entidades públicas no pueden escoger al proveedor que prefieran?</summary>
+    <p>Porque usan recursos públicos. La selección objetiva garantiza que gane la mejor oferta y no el amigo, el familiar o el conocido de quien decide.</p></details>
+  <details><summary>¿Una garantía es lo mismo que una póliza?</summary>
+    <p>No. La garantía es el respaldo exigido. La póliza es una de las formas de constituirla, junto con el patrimonio autónomo y la garantía bancaria.</p></details>
+</section>
+
+<section id="conclusiones" class="concl">
+  <h2><span class="tag">Punto 9</span>Conclusiones</h2>
+  <p>La contratación pública es la forma en que el Estado convierte presupuesto en obras, bienes y servicios. Como mueve recursos de todos, la ley la rodea de reglas que en la contratación privada serían opcionales: publicidad, selección objetiva, garantías y responsabilidad de quienes deciden. Entender esas reglas es entender por qué un proceso estatal es más lento y documentado que una compra de una empresa, y por qué esa diferencia es una protección y no un estorbo.</p>
+  <p>Lo que consideramos más relevante es la <b>planeación</b>. Casi todo lo que sale mal después, como pliegos que favorecen a alguien, contratos que se adicionan sin control o proveedores que incumplen, tiene origen en estudios previos débiles o en un análisis de riesgos que no se hizo. Para quien estudia compras, esta es la misma lección de la gestión de abastecimiento: comprar bien empieza antes de pedir cotizaciones, con una necesidad bien definida, un estudio del mercado y una modalidad bien escogida.</p>
+  <p>También destacamos tres ideas. Primero, el régimen de inhabilidades, incompatibilidades y conflicto de intereses protege la imparcialidad antes de que se abra el proceso, y por eso es la primera barrera contra la corrupción. Segundo, las garantías trasladan a un tercero el costo de un incumplimiento, así que son una herramienta de gestión de riesgo y no un trámite. Tercero, el SECOP permite a proveedores y ciudadanos seguir cada proceso, y para un comprador es también una fuente de información sobre precios, competidores y condiciones del mercado.</p>
+  <p>Relacionado con la asignatura, vemos que la contratación pública aplica el ciclo completo de compras: identificar la necesidad, seleccionar al proveedor, formalizar el acuerdo, controlar la ejecución y evaluar el resultado. La diferencia es que cada paso está regulado por la ley y se hace a la vista de todos. Un profesional de compras que domina este procedimiento puede trabajar tanto en entidades públicas como en empresas que venden al Estado.</p>
+  <div class="summary">
+    <h3>Ideas clave para llevarse</h3>
+    <ul>
+      <li>La contratación pública usa recursos de todos, por eso el procedimiento es reglado, público y vigilado.</li>
+      <li>La licitación pública es la regla general. Hay cuatro modalidades especiales: selección abreviada, concurso de méritos, contratación directa y mínima cuantía.</li>
+      <li>Inhabilidad, incompatibilidad y conflicto de intereses protegen la imparcialidad de quien contrata y de quien decide.</li>
+      <li>El proceso pasa por planeación, selección, contratación, ejecución y liquidación.</li>
+      <li>Las garantías respaldan la oferta, el cumplimiento y los daños a terceros.</li>
+      <li>El Decreto 1510 de 2013 hoy está compilado en el Decreto 1082 de 2015.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="bibliografia">
+  <h2><span class="tag">Fuentes</span>Bibliografía</h2>
+  <ul class="refs">
+    <li>Agencia Nacional de Contratación Pública – Colombia Compra Eficiente. (2026). <i>Concepto C-747 de 2026</i> [Conflicto de interés en la contratación estatal]. Relatoría Colombia Compra Eficiente. <a href="https://relatoria.colombiacompra.gov.co/conceptos/c-747-de-2026/">https://relatoria.colombiacompra.gov.co/conceptos/c-747-de-2026/</a></li>
+    <li>Agencia Nacional de Contratación Pública – Colombia Compra Eficiente. (2026, 9 de marzo). <i>Concepto C-117 de 2026</i> [Garantías en la contratación estatal]. Relatoría Colombia Compra Eficiente. <a href="https://relatoria.colombiacompra.gov.co/wp-content/uploads/2026/03/C-117.docx">https://relatoria.colombiacompra.gov.co/wp-content/uploads/2026/03/C-117.docx</a></li>
+    <li>Agencia Nacional de Contratación Pública – Colombia Compra Eficiente. (s. f.). <i>¿Qué son mecanismos de selección y cuáles existen?</i> <a href="https://operaciones.colombiacompra.gov.co/taxonomy/term/2651">https://operaciones.colombiacompra.gov.co/taxonomy/term/2651</a></li>
+    <li>Asamblea Nacional Constituyente. (1991). <i>Constitución Política de Colombia</i>, artículo 209.</li>
+    <li>Congreso de la República de Colombia. (1993, 28 de octubre). <i>Ley 80 de 1993. Por la cual se expide el Estatuto General de Contratación de la Administración Pública.</i> Diario Oficial No. 41.094.</li>
+    <li>Congreso de la República de Colombia. (2007, 16 de julio). <i>Ley 1150 de 2007. Por medio de la cual se introducen medidas para la eficiencia y la transparencia en la Ley 80 de 1993 y se dictan otras disposiciones generales sobre la contratación con recursos públicos.</i> Diario Oficial No. 46.691.</li>
+    <li>Congreso de la República de Colombia. (2011, 12 de julio). <i>Ley 1474 de 2011. Por la cual se dictan normas orientadas a fortalecer los mecanismos de prevención, investigación y sanción de actos de corrupción y la efectividad del control de la gestión pública.</i> Diario Oficial No. 48.128.</li>
+    <li>Congreso de la República de Colombia. (2011, 18 de enero). <i>Ley 1437 de 2011. Por la cual se expide el Código de Procedimiento Administrativo y de lo Contencioso Administrativo.</i> Diario Oficial No. 47.956.</li>
+    <li>Osorio Ruiz, J. J. (2024). <i>Modalidades de selección de la contratación pública en Colombia</i> (1.ª ed.). Universidad La Gran Colombia; Escuela Superior de Administración Pública. <a href="https://libros.esap.edu.co/index.php/omp/catalog/download/58/75/241?inline=1">https://libros.esap.edu.co/index.php/omp/catalog/download/58/75/241?inline=1</a></li>
+    <li>Presidencia de la República de Colombia. (2013, 17 de julio). <i>Decreto 1510 de 2013. Por el cual se reglamenta el sistema de compras y contratación pública.</i> Diario Oficial No. 48.854.</li>
+    <li>Presidencia de la República de Colombia. (2015, 26 de mayo). <i>Decreto 1082 de 2015. Por medio del cual se expide el Decreto Único Reglamentario del Sector Administrativo de Planeación Nacional.</i> Diario Oficial No. 49.523.</li>
+  </ul>
+</section>
+</main>
+</div>
